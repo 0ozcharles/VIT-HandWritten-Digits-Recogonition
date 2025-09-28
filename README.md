@@ -9,7 +9,6 @@ It covers **detect/split->preprocess->classify->evaluate/visualize** and works o
 
 ## 1) Environment
 
-**Verified setup (your laptop):**
 - **OS**: Windows 10/11
 - **GPU**: NVIDIA **GeForce RTX 3070 Laptop GPU** (Ampere, compute 8.6)  
 - **Driver**: 551.x or newer recommended
