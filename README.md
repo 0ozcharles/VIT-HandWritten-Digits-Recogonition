@@ -3,7 +3,7 @@
 An end-to-end pipeline for handwritten **digit recognition** built on **Vision Transformer (ViT)**.  
 It covers **detect/split->preprocess->classify->evaluate/visualize** and works on **MNIST** as well as noisy, real-world images that may contain **multiple digits per image**.
 
-![DBNet idea](./DBNet.png) ![Prediction](./prediction.png)
+![ViT Overview](./ViT_Net.png)![Adapted ViT](./Tiny_ViT.png)![DBNet idea](./DBNet.png) ![Prediction](./prediction.png)
 
 ---
 
