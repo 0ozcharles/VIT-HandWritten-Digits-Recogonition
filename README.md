@@ -8,10 +8,10 @@ It covers **detect/split->preprocess->classify->evaluate/visualize** and works o
 ---
 ## Architecture
 
-### 1) Vanilla Vision Transformer (ViT)
+###  Vanilla Vision Transformer (ViT)
 ![ViT Overview](./ViT_Net.png)
 
-### 2) Adapted ViT for 28×28 Digits (this repo)
+###  Adapted ViT for 28×28 Digits (this repo)
 ![Adapted ViT](./Tiny_ViT.png)
 
 **Key specs of the adapted ViT**
@@ -32,7 +32,7 @@ It covers **detect/split->preprocess->classify->evaluate/visualize** and works o
 - Dropout after **MHA/MLP** stabilizes training on small datasets.
 
 
-## 3) Environment
+##  Environment
 
 - **OS**: Windows 10/11
 - **GPU**: NVIDIA **GeForce RTX 3070 Laptop GPU** (Ampere, compute 8.6)  
