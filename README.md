@@ -3,11 +3,36 @@
 An end-to-end pipeline for handwritten **digit recognition** built on **Vision Transformer (ViT)**.  
 It covers **detect/split->preprocess->classify->evaluate/visualize** and works on **MNIST** as well as noisy, real-world images that may contain **multiple digits per image**.
 
-![ViT Overview](./ViT_Net.png)![Adapted ViT](./Tiny_ViT.png)![DBNet idea](./DBNet.png) ![Prediction](./prediction.png)
+![DBNet idea](./DBNet.png) ![Prediction](./prediction.png)
 
 ---
+## Architecture
 
-## 1) Environment
+### 1) Vanilla Vision Transformer (ViT)
+![ViT Overview](./ViT_Net.png)
+
+### 2) Adapted ViT for 28×28 Digits (this repo)
+![Adapted ViT](./Tiny_ViT.png)
+
+**Key specs of the adapted ViT**
+- **Input**: 28×28×1 grayscale
+- **Patch embedding**: `Conv2d(k=4, s=4)` → **7×7=49** patch tokens
+- **Embedding dim**: **64**
+- **Class token**: prepend -> sequence length **50**
+- **Positional embedding**: learnable, added to all tokens
+- **Encoder depth**: **L = 6** encoder blocks
+- **Each encoder block**: `LN -> MHA -> Dropout -> Residual->LN -> MLP(64 -> 128-> 64, GELU) -> Dropout -> Residual`
+- **Head**: `LN -> [CLS] extract -> Pre-Logits -> Linear(num_classes=10)`
+
+**Why this adaptation works for MNIST/noisy digits**
+- Smaller **embed dim (64)** + **shallower depth (L=6)** = efficient on laptops/3070.
+- **Conv2d patch embedding** is robust to local noise compared to flat linear projection.
+- **Patch size 4** fits 28×28 perfectly (no padding), preserving fine stroke details.
+- Lightweight **MLP expansion 2× (64->128->64)** keeps capacity while controlling overfit.
+- Dropout after **MHA/MLP** stabilizes training on small datasets.
+
+
+## 3) Environment
 
 - **OS**: Windows 10/11
 - **GPU**: NVIDIA **GeForce RTX 3070 Laptop GPU** (Ampere, compute 8.6)  
