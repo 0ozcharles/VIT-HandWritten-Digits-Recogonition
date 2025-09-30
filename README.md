@@ -1,7 +1,7 @@
 # VIT-HandWritten-Digits-Recogonition
 
 An end-to-end pipeline for handwritten **digit recognition** built on **Vision Transformer (ViT)**.  
-It covers **detect/split->preprocess->classify->evaluate/visualize** and works on **MNIST** as well as noisy, real-world images that may contain **multiple digits per image**.
+It covers **detect/split -> preprocess -> classify -> evaluate/visualize** and works on **MNIST** as well as noisy, real-world images that may contain **multiple digits per image**.
 
 ![DBNet idea](./DBNet.png) ![Prediction](./prediction.png)
 
@@ -16,7 +16,7 @@ It covers **detect/split->preprocess->classify->evaluate/visualize** and works o
 
 **Key specs of the adapted ViT**
 - **Input**: 28×28×1 grayscale
-- **Patch embedding**: `Conv2d(k=4, s=4)` → **7×7=49** patch tokens
+- **Patch embedding**: `Conv2d(k=4, s=4)` -> **7×7=49** patch tokens
 - **Embedding dim**: **64**
 - **Class token**: prepend -> sequence length **50**
 - **Positional embedding**: learnable, added to all tokens
@@ -28,7 +28,7 @@ It covers **detect/split->preprocess->classify->evaluate/visualize** and works o
 - Smaller **embed dim (64)** + **shallower depth (L=6)** = efficient on laptops/3070.
 - **Conv2d patch embedding** is robust to local noise compared to flat linear projection.
 - **Patch size 4** fits 28×28 perfectly (no padding), preserving fine stroke details.
-- Lightweight **MLP expansion 2× (64->128->64)** keeps capacity while controlling overfit.
+- Lightweight **MLP expansion 2× (64-> 128-> 64)** keeps capacity while controlling overfit.
 - Dropout after **MHA/MLP** stabilizes training on small datasets.
 
 
